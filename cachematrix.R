@@ -1,14 +1,10 @@
 makeCacheMatrix <- function( m = matrix() ) {
-
-	
     cm <- NULL
-
-    set <- function( matrix ) {
+    setmat <- function( matrix ) {
             mat <<- matrix
             cm <<- NULL
     }
-
-    get <- function() {
+    getmat <- function() {
     	mat
     }
 
