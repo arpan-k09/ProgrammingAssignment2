@@ -1,4 +1,4 @@
-makeCacheMatrix <- function( m = matrix() ) {
+makeCacheMatrix <- function( mat = matrix() ) {
     cm <- NULL
     setmat <- function( matrix ) {
             mat <<- matrix
