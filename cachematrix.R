@@ -19,30 +19,24 @@ makeCacheMatrix <- function( m = matrix() ) {
         cm
     }
 
-    list(set = set, get = get,
+    list(setmat = setmat, getmat = getmat,
          setInv = setInv,
          getInv = getInv)
 }
 
 cacheSolve <- function(x, ...) {
 
-    m <- x$getInv()
+    mmat <- x$getInv()
 
-    ## Just return the inverse if its already set
-    if( !is.null(m) ) {
+    
+    if( !is.null(mat) ) {
             message("getting cached data")
-            return(m)
+            return(mat)
     }
+    data <- x$getmat()
 
-    ## Get the matrix from our object
-    data <- x$get()
+    mat <- solve(data) %*% data
 
-    ## Calculate the inverse using matrix multiplication
-    m <- solve(data) %*% data
-
-    ## Set the inverse to the object
-    x$setInv(m)
-
-    ## Return the matrix
-    m
+    x$setInv(mat)
+    mat
 }
